@@ -1,0 +1,6 @@
+{
+  "name": "AgriStack - Digital Agriculture Ecosystem",
+  "description": "Unified digital public infrastructure for agriculture: Digital Farmer Registry, Geo-referenced Cadastral Farm Plots, AI Crop Doctor, Live Mandi Rates, Weather Advisories, and DBT Schemes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Polyfill for modern methods required by pdfjs-dist v6+
+      if (!Promise.try) {
+        Promise.try = function (fn, ...args) {
+          return new Promise(function (resolve) {
+            resolve(fn.apply(this, args));
+          });
+        };
+      }
+      if (!Uint8Array.prototype.toHex) {
+        Uint8Array.prototype.toHex = function () {
+          return Array.from(this, function (b) {
+            return b.toString(16).padStart(2, '0');
+          }).join('');
+        };
+      }
+      if (!Uint8Array.fromHex) {
+        Uint8Array.fromHex = function (hex) {
+          const bytes = new Uint8Array(Math.floor(hex.length / 2));
+          for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+          }
+          return bytes;
+        };
+      }
+    </script>
+    <title>AgriStack Digital Farmer ID Card Generator</title>
+    <meta name="description" content="Automated AgriStack Digital Farmer PVC ID Card Generator with AI PDF scanner, photo extraction, QR verification, and bulk printing." />
+    <meta property="og:title" content="AgriStack Digital Farmer ID Card Generator" />
+    <meta property="og:description" content="Automated AgriStack Digital Farmer PVC ID Card Generator with AI PDF scanner, photo extraction, QR verification, and bulk printing." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Bangla:ital@0;1&family=Cinzel:wght@600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body class="bg-slate-100 text-slate-800 antialiased selection:bg-emerald-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
